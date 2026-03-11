@@ -1,0 +1,92 @@
+export type TrainerEmploymentStatus = "active" | "inactive" | "on_leave" | "resigned";
+export type TrainerSalaryStatus = "paid" | "unpaid" | "partial";
+export type BloodGroup = "A+" | "A-" | "B+" | "B-" | "AB+" | "AB-" | "O+" | "O-";
+
+export interface Trainer {
+  id: number;
+  trainer_code: string;
+  id_card_number: string | null;
+  first_name: string;
+  last_name: string;
+  father_name: string | null;
+  mobile_number: string;
+  whatsapp_number: string | null;
+  email: string | null;
+  blood_group: BloodGroup | null;
+  profile_picture: string | null;
+  profile_picture_url: string | null;
+  date_of_birth: string | null;
+  age: number | null;
+  date_hired: string;
+  monthly_salary: number;
+  salary_currency: string;
+  salary_status: TrainerSalaryStatus;
+  employment_status: TrainerEmploymentStatus;
+  assigned_classes: string[];
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TrainerListItem {
+  id: number;
+  trainer_code: string;
+  first_name: string;
+  last_name: string;
+  mobile_number: string;
+  email: string | null;
+  date_hired: string;
+  monthly_salary: number;
+  salary_currency: string;
+  salary_status: TrainerSalaryStatus;
+  employment_status: TrainerEmploymentStatus;
+  profile_picture: string | null;
+  profile_picture_url: string | null;
+  assigned_classes: string[];
+  age: number | null;
+  created_at: string;
+}
+
+export interface TrainerFormValues {
+  first_name: string;
+  last_name: string;
+  father_name?: string;
+  mobile_number: string;
+  whatsapp_number?: string;
+  id_card_number?: string;
+  email?: string;
+  blood_group?: BloodGroup;
+  profile_picture?: FileList | null;
+  date_of_birth?: string;
+  date_hired: string;
+  monthly_salary: number;
+  salary_currency: string;
+  salary_status: TrainerSalaryStatus;
+  employment_status: TrainerEmploymentStatus;
+  assigned_classes: string[];
+  notes?: string;
+}
+
+export interface TrainerListParams {
+  page?: number;
+  page_size?: number;
+  search?: string;
+  employment_status?: TrainerEmploymentStatus;
+  salary_status?: TrainerSalaryStatus;
+  ordering?:
+    | "created_at"
+    | "-created_at"
+    | "date_hired"
+    | "-date_hired"
+    | "last_name"
+    | "-last_name"
+    | "monthly_salary"
+    | "-monthly_salary";
+}
+
+export interface PaginatedTrainersResponse {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: TrainerListItem[];
+}

@@ -43,7 +43,6 @@
 **/MANIFEST
 **/Pipfile.lock
 **/poetry.lock
-**/package-lock.json
 **/yarn.lock
 **/prompt
 **/logs

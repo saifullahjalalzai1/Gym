@@ -42,8 +42,6 @@ class Command(BaseCommand):
         extra_fields = {}
         if hasattr(User, "role_name"):
             extra_fields["role_name"] = role_name
-        if email:
-            extra_fields["email"] = email
 
         User.objects.create_superuser(identifier, email or None, password, **extra_fields)
         self.stdout.write("Default superuser created.")
